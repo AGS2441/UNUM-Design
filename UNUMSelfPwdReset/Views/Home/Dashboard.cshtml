@@ -13,16 +13,16 @@
         </span>
 
         <div class="hrl">
-            <strong style="font:xx-large" class="float-start f-26">Self Service Password Reset</strong>
+            <strong style="font:xx-large" class="float-start f-24">Self Service Password Reset</strong>
             @if (User.Identity?.IsAuthenticated == true)
             {
-                <a class="nav-link float-end mt-3 fs-13" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignOut">
+                <a class="float-end mt-3 fs-15" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignOut">
                     <i class="fa fa-sign-out pr-5" aria-hidden="true"></i> Sign out
                 </a>
             }
             else
             {
-                <a class="nav-link float-end mt-3 fs-13" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignIn">
+                <a class="float-end mt-3 fs-15" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignIn">
                     <i class="fa fa-sign-in pr-5" aria-hidden="true"></i> Sign in
                 </a>
             }

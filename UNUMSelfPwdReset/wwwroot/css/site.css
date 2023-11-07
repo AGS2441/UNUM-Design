@@ -1,5 +1,6 @@
 html {
     font-size: 14px;
+    background: #fff;
 }
 
 body {
@@ -8,6 +9,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
+    background: #fff;
 }
 
 @media (min-width: 768px) {
@@ -36,7 +38,8 @@ html {
 
 * {
     box-sizing: border-box;
-    font-family: fangsong;
+    /* font-family: fangsong;*/
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     padding: 0;
     margin: 0;
 }
@@ -198,15 +201,15 @@ section.dashboard-buttons {
 }
 
 .password-showhide {
-    float: right;
     margin-top: -37px;
     /* margin-left: -20px; */
     border: 1px solid silver;
-    padding: 5px 5px 5px 12px;
+    padding: 6px 8px 6px 12px;
     background: white;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 18px;
     width: 40px;
+    margin-left: -6px;
 }
 
 .lab {
@@ -238,7 +241,7 @@ section.dashboard-buttons {
     font-weight: bold;
     text-align: center;
 }
-/*//==========================After Sash theme=================================//*/
+/*//==========================After  theme impliment=================================//*/
 .btn-warning {
     color: #fff !important;
     background: #eb6d00 !important;
@@ -328,7 +331,7 @@ b {
 
 .hrl {
     left: 7%;
-    border-bottom: 4px solid silver;
+    border-bottom: 1px solid silver;
     position: absolute;
     width: 90%;
     float: right
@@ -347,9 +350,13 @@ b {
     font-size: 26px;
 }
 
+.f-24 {
+    font-size: 24px;
+}
+
 .cont {
     padding: 25px 7%;
-    box-shadow: -3px 4px 5px -1px #98c7ef;
+    box-shadow: 0px 6px 5px 0px #98c7ef;
     border-radius: 8px;
     margin: 0 2% 0px 1%;
 }
@@ -380,22 +387,61 @@ b {
 
 .table > :not(:last-child) > :last-child > * {
     border-right: 2px solid white;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 13px;
 }
+
 .table tbody td {
     font-size: 13px;
     font-weight: 500;
 }
+
 .h-b {
     display: none;
 }
+
+
+.btn-lb {
+    color: #ffff !important;
+    background-color: #037cb7;
+    border-color: #467fcf;
+    font-weight: 500;
+}
+
+    .btn-lb:hover {
+        color: #ffff !important;
+        background-color: #037cb7;
+        position: relative;
+        top: -3px;
+        box-shadow: -6px 14px 12px 2px silver;
+        font-weight: 500;
+    }
+
+    .btn-lb:focus,
+    .btn-lb.focus {
+        color: #ffff !important;
+        background-color: #037cb7;
+        position: relative;
+        top: -3px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+        font-weight: 500;
+    }
+
+    .btn-lb:active,
+    .btn-lb.active {
+        color: #ffff !important;
+        background-color: #037cb7;
+        position: relative;
+        top: -3px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+        font-weight: 500;
+    }
 
 .btn-bl {
     color: #ffff !important;
     background-color: #00428c;
     border-color: #467fcf;
-    font-weight: bold;
+    font-weight: 500;
 }
 
     .btn-bl:hover {
@@ -404,7 +450,7 @@ b {
         position: relative;
         top: -3px;
         box-shadow: -6px 14px 12px 2px silver;
-        font-weight: bold;
+        font-weight: 500;
     }
 
     .btn-bl:focus,
@@ -414,12 +460,32 @@ b {
         position: relative;
         top: -3px;
         box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
-        font-weight: bold;
+        font-weight: 500;
     }
 
+    .btn-bl:active,
+    .btn-bl.active {
+        color: #ffff !important;
+        background-color: #037cb7;
+        position: relative;
+        top: -3px;
+        box-shadow: -6px 14px 12px 2px rgba(90, 90, 90, .12);
+        font-weight: 500;
+    }
+
+.btn:active {
+    background-color: none !important;
+}
+
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+    background-color: none !important;
+}
+
+
 a {
-    color: #00428c !important;
-    font-weight: bold;
+    color: #037cb7 !important;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .mr-2 {
@@ -430,6 +496,73 @@ a {
     color: #00428c;
     font-size: 15px !important;
     font-weight: 600 !important;
+}
+
+.modal-header label {
+    font-weight: 400;
+    margin-block-end: unset;
+}
+
+.fs-16 {
+    font-size: 16px !important;
+}
+
+
+.modal-header {
+    display: block;
+    margin: 15px 10px 0 10px;
+    border-block-end: none;
+}
+
+.modal-dialog {
+    max-width: 660px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+ul {
+    list-style: disc;
+}
+
+.mr-3 {
+    margin-right: 1.5rem !important;
+}
+
+.text-bold {
+    font-weight: bold !important;
+}
+
+.semi-bold {
+    font-weight: 600 !important;
+}
+
+.ul-list {
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    text-align: left;
+    font-size: 15px;
+}
+
+.plr-10 {
+    padding: 0 10% !important;
+}
+
+.dd {
+    height: 100%;
+    padding: 0 10px;
+    font-weight: 400;
+    border: 1px solid silver;
+    border-radius: 6px;
+}
+
+.app-content .side-app {
+    padding: 0px 20px 10px 20px;
+}
+
+.i-img {
 }
 /*//==========================For responsive media Queries After Sash theme=================================//*/
 @media (max-width: 991px) {
@@ -443,6 +576,10 @@ a {
 
     .res {
         display: contents;
+    }
+
+    .app-content .side-app {
+        padding: 0px 15px 15px 15px !important;
     }
 
     .app.sidebar-mini.sidebar-gone.sidenav-toggled .app-sidebar {

@@ -16,16 +16,16 @@
         </span>
 
         <div class="hrl">
-            <strong style="font:xx-large" class="float-start f-26">Self Service Password Reset</strong>
+            <strong style="font:xx-large" class="float-start f-24">Self Service Password Reset</strong>
             @if (User.Identity?.IsAuthenticated == true)
             {
-                <a class="nav-link float-end mt-3 fs-13" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignOut">
+                <a class="float-end mt-3 fs-15" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignOut">
                     <i class="fa fa-sign-out pr-5" aria-hidden="true"></i> Sign out
                 </a>
             }
             else
             {
-                <a class="nav-link float-end mt-3 fs-13" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignIn">
+                <a class="float-end mt-3 fs-15" asp-area="MicrosoftIdentity" style="border:none;color:#015294" asp-controller="Account" asp-action="SignIn">
                     <i class="fa fa-sign-in pr-5" aria-hidden="true"></i> Sign in
                 </a>
             }
@@ -42,8 +42,8 @@
                 @*<label class="h5">Total Count: <span class="fw-bold"> </span>@Model.LoginClients.Count</label>*@
             </div>
             <div class="col-6">
-                <label class="h5">Want to...</label>
-                <select id="ddchg" aria-expanded="true" style="height:100%;padding: 0 10px;">
+                <label class="semi-bold">Want to...</label>
+                <select id="ddchg" aria-expanded="true" class="dd">
                     <option value="1">Change Password</option>
                     <option value="2">Reset Or Forgot Password</option>
                 </select>
@@ -156,45 +156,44 @@
             <h6>No login accounts was found.</h6>
         </div>
     }
-    <div class="modal fade slide-front disable-scroll" id="GenerateModel" tabindex="-1" role="dialog" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <form asp-action="GeneratePassword" asp-route-Id="@Model.Id" method="get">
-                    <div class="modal-body">
 
-                        <div class="row" style="justify-content:center;">
-                            <div class="col-md-12">
-                                <div class="form-group form-group-default">
-                                    <input type="hidden" class="copyTemp" />
-                                    <p class="ptext">
-
-                                        Are you sure to generate temprory password and request to use the same at re-login ?
-                                    </p>
-
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer" style="border: none;justify-content:flex-end;">
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal" style="border: 1px solid silver;"><i class="fa fa-check"></i> Confirm</button>
-                        <button type="button" class="btn btn-cancel dismissmodal" data-dismiss="modal" style="border: 1px solid silver;"><i class="fa fa-times-circle"></i> Cancel</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-    </div>
 
     <footer>
         <div class="row text-start">
             <div class="col-md-12 col-sm-12">
-                <a asp-action="dashboard" class="fs-14"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+                <a asp-action="dashboard" class="fs-14 btn-a"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
             </div>
         </div>
     </footer>
+</div>
+<div class="modal fade slide-front disable-scroll" id="GenerateModel" tabindex="-1" role="dialog" aria-hidden="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content tx-size-sm">
+            <form asp-action="GeneratePassword" asp-route-Id="@Model.Id" method="get">
+                <div class="modal-header">
+
+                    <div class="col-md-1 pull-left">
+                        <span class="float-start h-img ">  <i class="fa-solid fa-key f-26" style="color:#00428c;padding: 9px 6px;"></i></span>
+
+                    </div>
+                    <div class="col-md-11 pull-right text-left">
+                        <label class="fs-16 col-md-12 semi-bold">Generate Password</label>
+                        <label class="fs-15 col-md-12">Are you sure you want to generate a temporary password and request to use it for re-login ?</label>
+                    </div>
+
+                </div>
+                <div class="modal-body text-center p-4 pb-5 plr-10">
+                </div>
+
+                <div class="modal-footer pull-right" style="border: none;justify-content:flex-end;">
+                    <button type="button" class="btn btn-cancel dismissmodal" data-dismiss="modal" style="border: 1px solid silver;">Cancel</button>
+
+                    <button type="submit" class="btn btn-lb " data-dismiss="modal">Confirm</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
 </div>
 @section scripts{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -203,11 +202,7 @@
             $("#global-loader").hide();
         });
         $("#global-loader").hide();
-        // $(document).on('click', '.Generate', function () {
-        $('#Generate').click(function () {
-            debugger
-            $('#GenerateModel').modal('show');
-        });
+
 
         $(document).on('click', '.copyval', function () {
 
@@ -223,6 +218,13 @@
         });
         $(document).on('click', '.dismissmodal', function () {
             $('#GenerateModel').modal('hide');
+        });
+        $(document).on('click', '#Generate', function () {
+            $("#global-loader").hide();
+            $('#GenerateModel').modal('show');
+        });
+        $(document).on('click', '#change', function (e) {
+            $("#global-loader").hide();
         });
     </script>
 

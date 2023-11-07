@@ -18,7 +18,7 @@
     <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/brand/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/unum_favicon.ico">
 
     <!-- TITLE -->
     <title>@ViewData["Title"] - UNUMSelfPwdReset</title>
@@ -163,20 +163,35 @@
     <div class="modal fade" id="mdlchangepassword">
         <div class="modal-dialog modal-dialog-centered text-center " role="document">
             <div class="modal-content tx-size-sm">
-                <div class="modal-body text-center p-4 pb-5">
+                <div class="modal-header">
+                    
+                    <div class="col-md-1 pull-left">
+                        <span class="float-start h-img ">  <i class="fa-solid fa-key f-26" style="color:#00428c;padding: 9px 6px;"></i></span>
+                       
+                        </div>
+                    <div class="col-md-11 pull-right text-left">
+                        <label class="fs-16 col-md-12 semi-bold">Create a strong password to protect your account.</label>
+                        <label class="fs-15 col-md-12">We recommend using a combination of letters, numbers, and special characters."</label>
+                    </div>
+                    
+                </div>
+                <div class="modal-body text-center p-4 pb-5 plr-10">
                     @*  <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>*@
 
-                    <div>
+                  
+                    <div class="alert alert-secondary">
+                        <div class="ts float-start col-md-12 text-left" >
+                            <svg class="svg-warning mr-2" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#00428c">
+                                <path d="M0 0h24v24H0z" fill="none">
 
-                        <span class=""><i class="fa-solid fa-key"></i></span>
-                        <h3>Create a strong password to protect your account.</h3>
-                    </div>
-                    <div class="alert alert-success">
-                        <span>
-                            <i class="fa-solid fa-circle-exclamation"></i>
-                            <h6>Your password must:</h6>
-                        </span>
-                        <ul>
+                                </path>
+                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z">
+
+                                </path>
+                            </svg>
+                            <label class="fs-16 semi-bold">Your password must:</label>
+                        </div>
+                        <ul class="ul-list">
                             <li>Be a minimum of 12 characters</li>
                             <li>Not be the same as your first or last name</li>
                             <li>Contain at least one Uppercase character (A-Z)</li>
@@ -186,8 +201,8 @@
                     </div>
                 </div>
                 <div class="modal-footer" style="border: none;justify-content:flex-end;">
-                    <a href="https://account.activedirectory.windowsazure.com/ChangePassword.aspx" class="btn btn-primary" data-dismiss="modal" style="border: 1px solid silver;"><i class="fa fa-check" aria-hidden="true"></i> Confirm</a>
-                    <button type="button" class="btn btn-cancel dismissmodal" data-bs-dismiss="modal" style="border: 1px solid silver;"><i class="fa fa-times-circle" aria-hidden="true"></i> Cancel</button>
+                    <button type="button" class="btn btn-cancel dismissmodal" data-bs-dismiss="modal" style="border: 1px solid silver;">Cancel</button>
+                    <a href="https://account.activedirectory.windowsazure.com/ChangePassword.aspx" target="_blank" class="btn btn-lb change" data-dismiss="modal">Confirm</a>
                 </div>
             </div>
 
@@ -256,8 +271,20 @@
         $(document).on('click', '#closePopupNotificationView', function (e) {
 
         });
-        $(document).on('click', '.btn-primary', function (e) {
+        $(document).on('click', '.btn-lb', function (e) {
             $("#global-loader").show();
+        });
+        $(document).on('click', '.btn-bl', function (e) {
+            $("#global-loader").show();
+        });
+        $(document).on('click', '.btn-a', function (e) {
+            $("#global-loader").show();
+        });
+        $(document).on('click', '.change', function (e) {
+            $("#mdlchangepassword").modal('hide');
+            setTimeout(function () {
+                $("#global-loader").hide();                
+            }, 500);
         });
         $("#global-loader").hide();
     </script>
