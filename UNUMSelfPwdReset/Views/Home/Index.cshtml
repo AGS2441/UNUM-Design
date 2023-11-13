@@ -6,7 +6,7 @@
 <style>
 
 </style>
-<div class="row mt-5 mb-5">
+<div class="row mt-5 ">
 
     <div class="alert alert-tra">
 
@@ -34,43 +34,46 @@
 
 </div>
 <div class="cont">
+    <div class="row mb-2">
+        <label class="f-26 col-md-12">My Accounts</label>
+    </div>
     @if (Model.LoginClients != null)
     {
         int Sno = 0;
         <div class="row mb-1">
-            <div class="col-3">
+            <div class="col-5">
                 @*<label class="h5">Total Count: <span class="fw-bold"> </span>@Model.LoginClients.Count</label>*@
             </div>
-            <div class="col-6">
-                <label class="semi-bold">Want to...</label>
+            <div class="col-7">
+                @*<label class="semi-bold">Want to...</label>*@
                 <select id="ddchg" aria-expanded="true" class="dd">
                     <option value="1">Change Password</option>
-                    <option value="2">Reset Or Forgot Password</option>
+                    <option value="2">Forgot my password</option>
                 </select>
             </div>
-            <div class="col-3 text-right ">
-            </div>
+            @*<div class="col-3 text-right ">*@
+            @*</div>*@
         </div>
-        <div class="row">
-            <div class="res">
-                <div class="alert alert-secondary col-md-12">
-                    <div class="ts-h col-md-12 float-start">
-                        <div class="ts float-start">
-                            <svg class="svg-primary" xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 24 24" width="2.5rem" fill="#00428c">
-                                <path d="M0 0h24v24H0z" fill="none">
+        @* <div class="row">
+    <div class="res">
+    <div class="alert alert-secondary col-md-12">
+    <div class="ts-h col-md-12 float-start">
+    <div class="ts float-start">
+    <svg class="svg-primary" xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 24 24" width="2.5rem" fill="#00428c">
+    <path d="M0 0h24v24H0z" fill="none">
 
-                                </path>
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
-                            </svg>
-                        </div>
-                        <strong>
-                            we recommend using the system-generated password, which is considered secure. However, if you prefer, you can create a new password of your choice to make sure it’s in line with the company’s security policies.
-                        </strong>
-                    </div>
+    </path>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+    </svg>
+    </div>
+    <strong>
+    we recommend using the system-generated password, which is considered secure. However, if you prefer, you can create a new password of your choice to make sure it’s in line with the company’s security policies.
+    </strong>
+    </div>
 
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+    </div>*@
         @* <div class="alert-in">
     <p class="recom">
     <span class="f-26 ts"> <i class="fa-solid fa-circle-info fs-16 mr-3"></i></span>
@@ -78,12 +81,13 @@
     </p>
     </div>*@
 
-        <div class="table-responsive mb-2" style="min-height:320px;padding-top:10px">
+        <div class="table-responsive mb-2" style="min-height:220px;padding-top:10px">
             <table class="table border " id="tblaccounts">
                 <thead>
                     <tr class="bg-theme text-white">
                         <th>S.No</th>
                         <th>Account Type</th>
+                        <th>Description</th>
                         <th>Last Login</th>
                         <th>Expires In</th>
                         <th style="min-width:72px" class="text-center">ACTIONS</th>
@@ -96,7 +100,9 @@
                         <tr>
                             <td>@Sno</td>
 
-                            <td>@item.LoginType</td>
+                            @*<td>@item.LoginType</td>*@
+                            <td>LAN ID</td>
+                            <td>@item.Description</td>
                             <td>@item.LastSignInAt?.ToString("yyyy-MM-dd | hh:mm tt")</td>
                             @if (item.ExpireInDays.HasValue)
                             {
@@ -128,7 +134,7 @@
                                 {
 
                                     <a class="btn btn-bl h-b" id="Generate">
-                                        <i class="fa-solid fa-unlock-keyhole mr-2"></i><span> Reset or Forgot Password</span>
+                                        <i class="fa-solid fa-unlock-keyhole mr-2"></i><span> Forgot my password</span>
                                     </a>
                                     <a class="btn btn-bl update-button" data-bs-target="#mdlchangepassword" data-bs-toggle="modal" id="change">
                                         <i class="fa-solid fa-unlock-keyhole mr-2"></i>  <span>Change Password</span>
@@ -178,7 +184,7 @@
                     </div>
                     <div class="col-md-11 pull-right text-left">
                         <label class="fs-16 col-md-12 semi-bold">Generate Password</label>
-                        <label class="fs-15 col-md-12">Are you sure you want to generate a temporary password and request to use it for re-login ?</label>
+                        <label class="fs-15 col-md-12">Are you sure you want to generate a temporary password and request to use it for re-login?</label>
                     </div>
 
                 </div>

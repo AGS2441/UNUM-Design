@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model UserProfileViewModel
-<div class="row mt-5 mb-5">
+<div class="row mt-5">
 
     <div class="alert alert-tra">
 
@@ -33,47 +33,72 @@
 <div class="cont">
     <div class="row">
         <div class="res">
-            <div class="alert alert-warning col-md-12">
-                <div class="ts-h col-md-9 float-start">
-                    <div class="ts float-start">
-                        <svg class="svg-warning" xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 24 24" width="2.5rem" fill="#eb6d00">
-                            <path d="M0 0h24v24H0z" fill="none">
+            @if (Model.LoginClients[0].ExpireInDays > 14)
+            {
+                <div class="alert alert-secondary col-md-12">
+                    <div class="ts-h col-md-9 float-start">
+                        <div class="ts float-start">
+                            <svg class="svg-primary" xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 24 24" width="2.5rem" fill="#00428c">
+                                <path d="M0 0h24v24H0z" fill="none">
 
-                            </path>
-                            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z">
+                                </path>
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+                            </svg>
+                        </div>
 
-                            </path>
-                        </svg>
+                        <div class="m-s">
+                            <strong>Your</strong>
+
+                            <b> LAN ID password</b> <strong>will expire in </strong>
+
+                            <b>@Model.LoginClients[0].ExpireInDays days.</b>
+                        </div>
                     </div>
-                    @if (Model.LoginClients[0].ExpireInDays <= 14)
-                    {
-                        <strong>Your</strong>
-
-                        <b> windows Account Password</b> <strong>will Expire in </strong>
-
-                        <b>@Model.LoginClients[0].ExpireInDays days.</b>
-                    }
-                    else if (Model.LoginClients[0].ExpireInDays <= 0)
-                    {
-                        <strong>Your account password</strong>
-
-                        <b> is expired,</b> <strong> please Change the password to access your account. </strong>
-                    }
-                    else
-                    {
-                        <strong>Your account password is going to expire in </strong>
-
-                        <b>@Model.LoginClients[0].ExpireInDays days,</b>
-
-                        <strong> please change your password without any interruption. </strong>
-                    }
+                    <div class="col-md-3 float-end">
+                        <a class="btn btn-bl label-btn  ma-7 float-end change" data-bs-target="#mdlchangepassword" data-bs-toggle="modal" href="javascript:void(0)">
+                            <i class="fa fa-key me-2 t-r"></i>Change Password Now
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-3 float-end">
-                    <a class="btn btn-warning label-btn  ma-7 float-end" data-bs-target="#mdlchangepassword" data-bs-toggle="modal" href="javascript:void(0)">
-                        <i class="fa fa-key me-2 t-r"></i>Change Password Now
-                    </a>
+            }
+            else
+            {
+                <div class="alert alert-warning col-md-12">
+                    <div class="ts-h col-md-9 float-start">
+                        <div class="ts float-start">
+                            <svg class="svg-warning" xmlns="http://www.w3.org/2000/svg" height="2.5rem" viewBox="0 0 24 24" width="2.5rem" fill="#eb6d00">
+                                <path d="M0 0h24v24H0z" fill="none">
+
+                                </path>
+                                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z">
+
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="m-s">
+                            @if (Model.LoginClients[0].ExpireInDays <= 14 && Model.LoginClients[0].ExpireInDays > 0)
+                            {
+                                <strong>Your LAN ID password is going to expire in </strong>
+
+                                <b>@Model.LoginClients[0].ExpireInDays days,</b>
+
+                                <strong> please change your password without any interruption. </strong>
+                            }
+                            else if (Model.LoginClients[0].ExpireInDays <= 0)
+                            {
+                                <strong>Your LAN ID password</strong>
+
+                                <b> has expired.</b> <strong> Please click on change password now. </strong>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-3 float-end">
+                        <a class="btn btn-warning label-btn  ma-7 float-end change" data-bs-target="#mdlchangepassword" data-bs-toggle="modal" href="javascript:void(0)">
+                            <i class="fa fa-key me-2 t-r"></i>Change Password Now
+                        </a>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
     <div class="row mt-6">
@@ -92,12 +117,12 @@
                                     <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
                                             <div class="h-8 w-9 chart-dropshadow t-r">
-                                                <i class="fa fa-user i-c fs-24" aria-hidden="true"></i>
+                                                <i class="fa fa-user i-c fs-30" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h4 class="st fs-16">
+                                <h4 class="st fs-18">
                                     My Accounts
                                 </h4>
                             </div>

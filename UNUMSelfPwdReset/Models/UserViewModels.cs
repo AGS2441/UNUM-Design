@@ -1,5 +1,6 @@
 ﻿
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace UNUMSelfPwdReset.Models
@@ -30,6 +31,7 @@ namespace UNUMSelfPwdReset.Models
         public DateTime? LastSignInAt { get; set; }
         public int? ExpireInDays { get; set; }
         public string Username { get; set; }
+        public string Description { get; set; }
 
 
         public bool HasAccess { get; set; }
@@ -39,8 +41,12 @@ namespace UNUMSelfPwdReset.Models
 
     public enum LoginClientType
     {
-        AzureAD,
-        RACF
+        [Display(Name = "Lan Id")]
+        [Description("LAN ID")]
+        LAN ,
+        RACF,
+        ID,
+        AzureAD
 
     }
     public class GenerateResponce

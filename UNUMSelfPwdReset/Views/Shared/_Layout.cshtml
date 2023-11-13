@@ -46,31 +46,39 @@
 
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
-        <img src="~/assets/images/loader.svg" class="loader-img" alt="Loader">
+        @*<img src="~/assets/images/loader.svg" class="loader-img" alt="Loader">*@
+        <div class="load-blur"></div>
+        <div class="text-center text-white Load-d" >
+            <p class="m-n Load-P">
+                @*<i  class="fa-solid fa-spinner f-26 text-x rotate mr-2" style="color:#3d3d92"></i>*@
+                <img src="~/assets/images/loader.svg" style="height:52px;" alt="Loader">
+                <span class="h6 font-thin semi-bold">Loading...</span>
+            </p>
+        </div>
     </div>
     <!-- /GLOBAL-LOADER -->
     <!-- PAGE -->
     <!-- app-Header -->
-    <div class="app-header header sticky">
-        <div class="container-fluid main-container">
-            <div class="d-flex">
-                <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
-                <!-- sidebar-toggle-->
-                <a class=" " href="index.html">
-                    <img src="~/assets/img/brand/logo-1.png" class="header-brand-img desktop-logo" alt="logo">
-                    <img src="~/assets/img/brand/logo-1.png" class="header-brand-img light-logo1"
+    
+        <div class="app-header header sticky">
+            <div class="container-fluid main-container">
+                <div class="d-flex">
+                    <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
+                    <!-- sidebar-toggle-->
+                    <a class=" " href="index.html">
+                        <img src="~/assets/img/brand/logo-1.png" class="header-brand-img desktop-logo" alt="logo">
+                        <img src="~/assets/img/brand/logo-1.png" class="header-brand-img light-logo1"
                          alt="logo">
-                </a>
-                <!-- LOGO -->
+                    </a>
+                    <!-- LOGO -->
 
 
 
+                </div>
             </div>
         </div>
-    </div>
-
-
-
+   @if (User.Identity?.IsAuthenticated == true)
+    {
     <!-- /app-Header -->
     <!--APP-SIDEBAR-->
     <div class="sticky">
@@ -94,11 +102,11 @@
                         {
                             @if (@Context.Session.GetString("Profilepic") != null && @Context.Session.GetString("Profilepic") != "")
                             {
-                                <img src="data:image;base64,@Context.Session.GetString("Profilepic")" style="height:150px;border-radius:50%;" />
+                                    <img src="data:image;base64,@Context.Session.GetString("Profilepic")" class="profile-img" />
                             }
                             else
                             {
-                                <img src="~/assets/images/user.png" style="height:150px;border-radius:50%;" />
+                                    <img src="~/assets/images/user.png" class="profile-img" />
 
                             }
                         }
@@ -122,41 +130,57 @@
 
             </div>
         </div>
-    </div>
+        </div>
+    }
     <!--/APP-SIDEBAR-->
     <!--app-content open-->
     <div class="main-content app-content mt-0">
         <div class="side-app">
 
             <!-- CONTAINER -->
-            <div class="main-container container-fluid">
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <div class="main-container container-fluid">
 
-                
+                    @RenderBody()
+                </div>
+            }
+            else
+            {
+                <div class="main-content app-content mt-0">
 
-                @RenderBody()
+                    <main role="main" class="pb-3" style="padding: 45px;">
+                        @if (User.Identity?.IsAuthenticated != true)
+                        {
+                            <img src="~/assets/images/brand/logo.png" alt="logo" style="height:36px;margin: 15px 0;" />
+                        }
+                        @RenderBody()
+                    </main>
+                    @if (User.Identity?.IsAuthenticated != true)
+                    {
+                        <a class="btn btn-bl" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn" style="margin: 0 45px;">
+                            <i class="fa fa-sign-in f-16 pr-5" aria-hidden="true"></i>  Sign in
+                        </a>
+                    }
+                </div>
+            }
 
 
-            </div>
             <!-- CONTAINER CLOSED -->
         </div>
     </div>
     <!--app-content closed-->
-
-
-
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="row align-items-center flex-row-reverse">
                 <div class="col-md-12 col-sm-12 text-center">
-                    Copyright © <span id="year"></span> <a href="javascript:void(0)"> UNUM </a> All rights reserved.
+                    Copyright © <span id="year"></span> <a href="javascript:void(0)"> UNUM. </a> All rights reserved.
                 </div>
             </div>
         </div>
     </footer>
     <!-- FOOTER CLOSED -->
-
-
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
     <!-- MODAL ALERT MESSAGE -->
@@ -164,23 +188,23 @@
         <div class="modal-dialog modal-dialog-centered text-center " role="document">
             <div class="modal-content tx-size-sm">
                 <div class="modal-header">
-                    
+
                     <div class="col-md-1 pull-left">
                         <span class="float-start h-img ">  <i class="fa-solid fa-key f-26" style="color:#00428c;padding: 9px 6px;"></i></span>
-                       
-                        </div>
+
+                    </div>
                     <div class="col-md-11 pull-right text-left">
                         <label class="fs-16 col-md-12 semi-bold">Create a strong password to protect your account.</label>
-                        <label class="fs-15 col-md-12">We recommend using a combination of letters, numbers, and special characters."</label>
+                        <label class="fs-15 col-md-12">We recommend using a combination of letters, numbers, and special characters.</label>
                     </div>
-                    
+
                 </div>
                 <div class="modal-body text-center p-4 pb-5 plr-10">
                     @*  <button aria-label="Close" class="btn-close position-absolute" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span></button>*@
 
-                  
+
                     <div class="alert alert-secondary">
-                        <div class="ts float-start col-md-12 text-left" >
+                        <div class="ts float-start col-md-12 text-left">
                             <svg class="svg-warning mr-2" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#00428c">
                                 <path d="M0 0h24v24H0z" fill="none">
 
@@ -193,10 +217,11 @@
                         </div>
                         <ul class="ul-list">
                             <li>Be a minimum of 12 characters</li>
-                            <li>Not be the same as your first or last name</li>
-                            <li>Contain at least one Uppercase character (A-Z)</li>
+                            <li>Not be the same as your previous six passwords</li>
+                            <li>Not contain your first or last name</li>
+                            <li>Contain at least one Uppercase character (A through Z)</li>
                             <li>Contain at least one Number (0-9)</li>
-                            <li>Contain at least one special character </li>
+                            <li>Contain at least one special character<text>(-!&#64;#$%()^&*)</text> </li>
                         </ul>
                     </div>
                 </div>
@@ -283,7 +308,7 @@
         $(document).on('click', '.change', function (e) {
             $("#mdlchangepassword").modal('hide');
             setTimeout(function () {
-                $("#global-loader").hide();                
+                $("#global-loader").hide();
             }, 500);
         });
         $("#global-loader").hide();

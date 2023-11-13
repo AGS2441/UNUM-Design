@@ -289,8 +289,8 @@ namespace UNUMSelfPwdReset.Controllers
                 model.TempPassword = tempPassword;
 
                 Error = " Reset Password";
-               // var response = await _passwordResetService.ResetUserPasswordAsync(token, temp);
-                var response = "true";
+                var response = await _passwordResetService.ResetUserPasswordAsync(token, temp);
+               // var response = "true";
                 if (response == "true")
                 {
 
