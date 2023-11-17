@@ -675,6 +675,7 @@ ul {
     min-height: 220px;
     padding-top: 10px
 }
+
 /*//==========================For responsive media Queries After Sash theme=================================//*/
 @media (max-width: 991px) {
     .app-sidebar__toggle:before {
@@ -720,12 +721,21 @@ ul {
         font-size: 12px;
         min-height: 80px;
     }
-    .alert {
-        font-size: 13px;
+    .alert-secondary {
+        min-height: 64px;
     }
-
+    .alert {
+        font-size: 12px;
+        padding:0.5rem 1.25rem !important;
+    }
+    .svg-primary{
+        height:2rem !important;
+        width:2rem !important;
+    }
     .h-img {
-        margin-left: -25px;
+        margin-left: -20px;
+        width: 52px;
+        height: 52px;
     }
 
     .res {
@@ -740,8 +750,13 @@ ul {
     .footer{
         font-size:11px;
     }
-    .fs-18{
- font-size:15px !important;
+    .h-svg {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin: 2px 2px;
+    }
+    .fs-18 {
+        font-size: 15px !important;
     }
     .btn{
         font-size:11px !important;
@@ -769,7 +784,7 @@ ul {
         font-size: 11px !important;
     }
     .i-tbl {
-        min-height: 280px;
+        min-height: 160px;
         padding-top: 5px
     }
     .ul-list{
@@ -777,5 +792,8 @@ ul {
     }
     .fs-16 {
         font-size: 14px !important;
+    }
+    .p-res{
+        padding:0.5rem 0 !important;
     }
 }
